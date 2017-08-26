@@ -5,9 +5,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Car {
 
-    static int normalSpeed;
-    static String name;
-    static int distanceTraveled;
+    int normalSpeed;
+    String name;
+    int distanceTraveled;
 
     //constructor
     public Car(boolean isSpeedLimit) {
@@ -105,16 +105,16 @@ public class Car {
 
         //initialize normalSpeed
         if (isSpeedLimit == true) {
-            normalSpeed = 70;
+            this.normalSpeed = 70;
         } else {
-            normalSpeed = ThreadLocalRandom.current().nextInt(80, 111);
+            this.normalSpeed = ThreadLocalRandom.current().nextInt(80, 111);
         }
 
         //initialize name
-        name = nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1)) + nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1));
+        this.name = nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1)) + nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1));
 
         //initialize distanceTraveled
-        distanceTraveled = 0;
+        this.distanceTraveled = 0;
 
     }
 
@@ -128,8 +128,10 @@ public class Car {
     }
 
 
-    private static void moveForAnHour() {
-        distanceTraveled = distanceTraveled + normalSpeed;
+    private void moveForAnHour() {
+
+        this.distanceTraveled = this.distanceTraveled + this.normalSpeed;
+
     }
 
 }

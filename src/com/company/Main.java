@@ -14,6 +14,7 @@ public class Main {
      */
 
     public static ArrayList<Car> cars = new ArrayList<>();
+    public static ArrayList<Motorcycle> motorcycles = new ArrayList<>();
 
     public static boolean isRaining() {
         Random diceRoll = new Random();
@@ -31,15 +32,19 @@ public class Main {
     public static void createVechicles() {
 
         for (int i = 0; i <= 10; i++) {
+            //initialize cars
             Random speedLimit = new Random();
             int limit = speedLimit.nextInt(100);
             boolean isLimit = Car.setSpeedLimit(limit);
             cars.add(i, new Car(isLimit));
+
+            //initialize motorcycles
+            motorcycles.add(i, new Motorcycle(isRaining()));
         }
     }
 
     public static void main(String[] args) {
-        isRaining();
+
         }
 
 

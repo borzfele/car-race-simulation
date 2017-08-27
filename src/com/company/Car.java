@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Car {
 
-    int speed;
+    static int normalSpeed;
     String name;
     int distanceTraveled;
 
@@ -105,14 +105,7 @@ public class Car {
         nameComponents.add("Crux");
 
         //initialize speed
-        Random speedLimit = new Random();
-        int limit = speedLimit.nextInt(100);
-        boolean isLimit = Car.setSpeedLimit(limit);
-        if (isLimit) {
-            this.speed = 70;
-        } else {
-            this.speed = ThreadLocalRandom.current().nextInt(80, 111);
-        }
+        this.normalSpeed = ThreadLocalRandom.current().nextInt(80, 111);
 
         //initialize name
         this.name = nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1)) + ' ' + nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1));
@@ -121,20 +114,20 @@ public class Car {
         this.distanceTraveled = 0;
 
     }
+    protected static void setSpeedLimit(int limit) {
+        Random speedLimitRoll = new Random();
+        int limitChance = speedLimitRoll.nextInt(101);
 
-
-    protected static boolean setSpeedLimit(int limit) {
-        if (limit > 30) {
-            return false;
-        } else {
-            return true;
+        if (limitChance <= 30) {
+            normalSpeed = limit;
         }
+
     }
 
 
     public void moveForAnHour() {
 
-        this.distanceTraveled = this.distanceTraveled + this.speed;
+        this.distanceTraveled = this.distanceTraveled + this.normalSpeed;
 
     }
 

@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.SortedMap;
 
 public class Main {
 
@@ -29,24 +30,41 @@ public class Main {
         }
     }
 
-    public static void createVechicles() {
+    public static void createVehicles() {
 
         for (int i = 0; i <= 10; i++) {
             //initialize cars
-            Random speedLimit = new Random();
-            int limit = speedLimit.nextInt(100);
-            boolean isLimit = Car.setSpeedLimit(limit);
-            cars.add(i, new Car(isLimit));
+            cars.add(i, new Car());
 
             //initialize motorcycles
             motorcycles.add(i, new Motorcycle(isRaining()));
         }
     }
 
+    public static void printRaceResults() {
+        for (Car car : cars) {
+
+            System.out.println(String.valueOf(car.getClass().getSimpleName()) + ' ' + car.name + ' ' + car.distanceTraveled);
+        }
+        for (Motorcycle motorcycle : motorcycles) {
+            System.out.println(String.valueOf(motorcycle.getClass().getSimpleName()) + ' ' + motorcycle.name + ' ' + motorcycle.distanceTraveled);
+        }
+    }
+
     public static void main(String[] args) {
 
+        createVehicles();
+
+        for (int i = 0; i < 50; i++) {
+            for (Car car : cars) {
+                car.moveForAnHour();
+            }
+            for (Motorcycle motorcycle : motorcycles) {
+                motorcycle.moveForAnHour();
+            }
         }
 
+        printRaceResults();
 
     }
 }

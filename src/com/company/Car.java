@@ -1,16 +1,17 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Car {
 
-    int normalSpeed;
+    int speed;
     String name;
     int distanceTraveled;
 
     //constructor
-    public Car(boolean isSpeedLimit) {
+    public Car() {
         ArrayList<String> nameComponents = new ArrayList<>();
 
         //initialize nameComponents
@@ -103,15 +104,18 @@ public class Car {
         nameComponents.add("Equuleus");
         nameComponents.add("Crux");
 
-        //initialize normalSpeed
-        if (isSpeedLimit == true) {
-            this.normalSpeed = 70;
+        //initialize speed
+        Random speedLimit = new Random();
+        int limit = speedLimit.nextInt(100);
+        boolean isLimit = Car.setSpeedLimit(limit);
+        if (isLimit) {
+            this.speed = 70;
         } else {
-            this.normalSpeed = ThreadLocalRandom.current().nextInt(80, 111);
+            this.speed = ThreadLocalRandom.current().nextInt(80, 111);
         }
 
         //initialize name
-        this.name = nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1)) + nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1));
+        this.name = nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1)) + ' ' + nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1));
 
         //initialize distanceTraveled
         this.distanceTraveled = 0;
@@ -128,9 +132,9 @@ public class Car {
     }
 
 
-    private void moveForAnHour() {
+    public void moveForAnHour() {
 
-        this.distanceTraveled = this.distanceTraveled + this.normalSpeed;
+        this.distanceTraveled = this.distanceTraveled + this.speed;
 
     }
 

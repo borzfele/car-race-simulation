@@ -22,7 +22,7 @@ public class Motorcycle {
         nameNumber++;
     }
 
-    private void moveForAnHour() {
+    public void moveForAnHour() {
 
         this.distanceTraveled = this.distanceTraveled + this.speed;
 

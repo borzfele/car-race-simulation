@@ -1,20 +1,23 @@
 package com.company;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class Car {
+
 
     static int normalSpeed;
     String name;
     int distanceTraveled;
 
-    //constructor
+
     public Car() {
+
         ArrayList<String> nameComponents = new ArrayList<>();
 
-        //initialize nameComponents
         nameComponents.add("Hydra");
         nameComponents.add("Virgo");
         nameComponents.add("Ursa");
@@ -104,31 +107,25 @@ public class Car {
         nameComponents.add("Equuleus");
         nameComponents.add("Crux");
 
-        //initialize speed
-        this.normalSpeed = ThreadLocalRandom.current().nextInt(80, 111);
-
-        //initialize name
-        this.name = nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1)) + ' ' + nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1));
-
-        //initialize distanceTraveled
-        this.distanceTraveled = 0;
-
+        normalSpeed = ThreadLocalRandom.current().nextInt(80, 111);
+        name = nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1)) + ' ' + nameComponents.get(ThreadLocalRandom.current().nextInt(0, nameComponents.size() - 1));
+        distanceTraveled = 0;
     }
+
+
     protected static void setSpeedLimit(int limit) {
+
         Random speedLimitRoll = new Random();
         int limitChance = speedLimitRoll.nextInt(101);
 
         if (limitChance <= 30) {
             normalSpeed = limit;
         }
-
     }
 
 
     public void moveForAnHour() {
 
         this.distanceTraveled = this.distanceTraveled + this.normalSpeed;
-
     }
-
 }

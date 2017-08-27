@@ -5,17 +5,11 @@ import java.util.Random;
 
 public class Main {
 
-    /*
- Main
- static isRaining //30% chance of rain every hour
- createVehicles() // creates 10 cars, 10 trucks and 10 motorcycles
- simulateRace() // simulates the race by calling moveForAnHour() on every vehicle 50 times and setting whether its raining.
- printRaceResults() // prints each vehicle's name, distance traveled ant type.
-     */
 
     public static ArrayList<Car> cars = new ArrayList<>();
     public static ArrayList<Motorcycle> motorcycles = new ArrayList<>();
     public static ArrayList<Truck> trucks = new ArrayList<>();
+
 
     public static boolean isRaining() {
         Random diceRoll = new Random();
@@ -23,30 +17,25 @@ public class Main {
 
         if (result > 30) {
             return true;
-
         } else {
             return false;
-
         }
     }
 
+
     public static void createVehicles() {
 
-        for (int i = 0; i <= 10; i++) {
-            //initialize cars
+        for (int i = 0; i < 10; i++) {
             cars.add(i, new Car());
-
-            //initialize motorcycles
             motorcycles.add(i, new Motorcycle(isRaining()));
-
-            //initialize trucks
             trucks.add(i, new Truck());
         }
     }
 
-    public static void printRaceResults() {
-        for (Car car : cars) {
 
+    public static void printRaceResults() {
+
+        for (Car car : cars) {
             System.out.println(String.valueOf(car.getClass().getSimpleName()) + ' ' + car.name + ' ' + car.distanceTraveled);
         }
         for (Motorcycle motorcycle : motorcycles) {
@@ -56,6 +45,7 @@ public class Main {
             System.out.println(String.valueOf(truck.getClass().getSimpleName()) + ' ' + truck.name + ' ' + truck.distanceTraveled);
         }
     }
+
 
     public static void main(String[] args) {
 

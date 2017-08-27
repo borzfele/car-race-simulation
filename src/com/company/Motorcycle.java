@@ -1,6 +1,8 @@
 package com.company;
 
+
 import java.util.concurrent.ThreadLocalRandom;
+
 
 public class Motorcycle {
 
@@ -9,23 +11,23 @@ public class Motorcycle {
     String name;
     int distanceTraveled;
 
+
     protected Motorcycle(boolean isRaining) {
 
         if (isRaining) {
-            this.speed = 100 - ThreadLocalRandom.current().nextInt(5, 51);
+            speed = 100 - ThreadLocalRandom.current().nextInt(5, 51);
         } else {
-            this.speed = 100;
+            speed = 100;
         }
 
-        this.name = "Motorcycle " + nameNumber;
-        this.distanceTraveled = 0;
+        name = "Motorcycle " + nameNumber;
+        distanceTraveled = 0;
         nameNumber++;
     }
 
+
     public void moveForAnHour() {
 
-        this.distanceTraveled = this.distanceTraveled + this.speed;
-
+        distanceTraveled = distanceTraveled + speed;
     }
-
 }
